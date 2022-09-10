@@ -6,11 +6,13 @@ import {
    Register,
    Login,
    Logout,
-} from ".components";
+   Home,
+} from "./Components";
 
 function App() {
    const [username, setUsername] = useState();
    const [password, setPassword] = useState();
+   const [email, setEmail] = useState();
    const [isLoggedIn, setIsLoggedIn] = useState(false);
    const [token, setToken] = useState();
    const [dogsList, setDogsList] = useState ([{}])

@@ -8,6 +8,8 @@ const Register = ({
     password,
     setPassword,
     setToken,
+    email,
+    setEmail,
 }) => {
     const navigate = useNavigate();
 
@@ -17,6 +19,7 @@ const Register = ({
             const data = await registerUser({
                 username,
                 password,
+                email,
             });
 
             const token = data.token;
@@ -46,7 +49,35 @@ const Register = ({
     }
 
     return (
-
+        <form className="form" onSubmit={handleSubmit}>
+            <h2>Register New Account</h2>
+                <label>
+                    <p>Username:</p>
+                    <input
+                        type="text"
+                        minLength="8"
+                        onChange={(event) => setUsername(event.target.value)}
+                        required
+                    />
+                </label>
+                <label>
+                    <p>Password:</p>
+                    <input
+                        type="password"
+                        name="password"
+                        minLength="8"
+                        onChange={(event) => setPassword(event.target.value)}
+                        required
+                    />
+                </label>
+                <label>
+                    <p>Confirm Password:</p>
+                    <input type="password" name="confirm" minLength="5" required />
+                </label>
+                    <div>
+                        <button type="submit">Submit</button>
+                    </div>
+      </form>
     );
 };
 
