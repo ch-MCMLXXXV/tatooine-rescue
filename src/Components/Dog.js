@@ -1,5 +1,4 @@
 import React from "react";
-import { fetchAllDogs } from "../api";
 
 const Dog = ({dogs}) => {
     return (
