@@ -23,7 +23,7 @@ export async function registerUser({ username, password }) {
 
 export async function loginUser({ username, password }) {
 	try {
-		return fetch(`${BASE_URL}/users/login`, {
+		return fetch(`${BASE_URL}/dogs/login`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -43,9 +43,9 @@ export async function loginUser({ username, password }) {
 	}
 }
 
-export async function getAllDogs() {
+export async function fetchAllDogs() {
 	try {
-		return fetch(`${BASE_URL}/activities`, {
+		return fetch(`${BASE_URL}/dogs`, {
 			headers: {
 				"Content-Type": "application/json",
 			},
@@ -54,6 +54,75 @@ export async function getAllDogs() {
 			.then((result) => {
 				return result;
 			});
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+export async function createDog ({ token, _name, description, breed, image_url, adoption_fee }) {
+	try {
+		return fetch (`${BASE_URL}/dogs`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${token}`,
+			},
+			body: JSON.stringify({
+				name: _name,
+				description: description,
+				breed: breed,
+				image: image_url,
+				adoption_fee: adoption_fee
+			}),
+		})
+		.then((response) => response.json())
+		.then((result) => {
+			return result;
+		});
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+export async function editDog ({ token, dogsId, _name, description, breed, image_url, adoption_fee }) {
+	try {
+		return fetch (`${BASE_URL}/dogs/${dogsId}`, {
+			method: "PATCH",
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": `Beaer ${token}`
+			},
+			body: JSON.stringify ({
+				name: _name,
+				description: description,
+				breed: breed,
+				image: image_url,
+				adoption_fee: adoption_fee
+			})
+		})
+		.then((response) => response.json())
+		.then((result) => {
+			return result;
+		});
+	}
+	catch (error) {
+		console.error(error);
+	}
+}
+
+export async function deleteDog ({ token, dogsId }) {
+	try {
+		return fetch (`${BASE_URL}/dogs/${dogsId}`, {
+			method: "DELETE",
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": `Bearer ${token}`
+			}
+		})
+		.then((response) => response.json())
+		.then((result) => {
+			return result;
+		});
 	} catch (error) {
 		console.error(error);
 	}

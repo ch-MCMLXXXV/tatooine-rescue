@@ -33,7 +33,35 @@ const Login = ({
     };
 
     return (
-        
+
+        <form className="form" onSubmit={(handleSubmit)}>
+            <div>
+                <h2>Log In</h2>
+                    <label>
+                        <p>Username</p>
+                        <input
+                            type="text"
+                            onChange={(event) => setUsername(event.target.value)}
+                            minLength="8"
+                            required
+                        />
+                    </label>
+                    <label>
+                        <p>Password</p>
+                        <input
+                            type="text"
+                            onChange={(event) => setPassword(event.target.value)}
+                            minLength="8"
+                            required
+                        />
+                    </label>
+                    <div>
+                        <button type="submit">Submit</button>
+                    </div>
+            </div>
+        </form>
+
+
     );
 };
 
