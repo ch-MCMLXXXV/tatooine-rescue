@@ -33,6 +33,7 @@ const Login = ({
     };
 
     return (
+
         <form className="form" onSubmit={(handleSubmit)}>
             <div>
                 <h2>Log In</h2>
@@ -59,6 +60,7 @@ const Login = ({
                     </div>
             </div>
         </form>
+
 
     );
 };
