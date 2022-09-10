@@ -6,6 +6,7 @@ async function dropTables() {
 
 	try {
 		console.log('Starting to drop tables...');
+        client.connect();
 
 		await client.query(`
         DROP TABLE IF EXISTS orders;
@@ -18,7 +19,7 @@ async function dropTables() {
 
 		throw error;
 	}
-	console.log('finished to dropping tables');
+	console.log('finished dropping tables');
 }
 
 async function createTables() {

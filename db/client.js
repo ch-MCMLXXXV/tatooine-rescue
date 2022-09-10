@@ -1,10 +1,9 @@
 const { Client } = require('pg');
 
-const DB_NAME = 'capstone';
-
 const client = new Client({
 	connectionString:
-		process.env.DATABASE_URL || `postgres://localhost:3001/${DB_NAME}`,
+		process.env.DATABASE_URL ||
+		`postgres://localhost:5432/tatooine_rescue-dev`,
 	ssl:
 		process.env.NODE_ENV === 'production'
 			? { rejectUnauthorized: false }
