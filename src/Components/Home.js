@@ -35,3 +35,5 @@ const Home = ({ setDogs, setDogsToDisplay }) => {
             </div>
         )
 }
+
+export default Home
