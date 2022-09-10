@@ -1,5 +1,7 @@
-module.exports = {
-    // ...require('./client'), // adds key/values from users.js
-    ...require('./users'), // adds key/values from users.js
 
+    module.exports = {
+      ...require('./client'),
+      ...require('./dogs'),
+      ...require('./users'),
+      ...require('./orders'),
   }
