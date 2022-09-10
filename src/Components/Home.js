@@ -29,9 +29,7 @@ const Home = ({ setDogs, setDogsToDisplay }) => {
                         <div>{dogs.image_url}</div>
                         <div>{dogs.adoption_fee}</div>
                     </div>)
-                }
-    
-                
+                }  
             </div>
         )
 }
