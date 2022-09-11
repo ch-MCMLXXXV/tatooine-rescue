@@ -40,7 +40,7 @@ async function createTables() {
             title VARCHAR(255)  NOT NULL,
             description VARCHAR(255) NOT NULL,
             adoption_fee INTEGER NOT NULL,
-            "inventoryQuantity" INTEGER NOT NULL,
+            quantity INTEGER NOT NULL,
             breed VARCHAR(255) NOT NULL,
             image TEXT,
             "isActive" BOOLEAN DEFAULT true
@@ -119,7 +119,7 @@ async function createInitialDogsTable() {
 				description:
 					'Tan Frenchy with the cutest side eye ever. Get your own little yoda to carry around.',
 				adoption_fee: 100,
-				inventoryQuantity: 5,
+				quantity: 5,
 				breed: 'French Bull Dog',
 				image: 'https://unsplash.com/photos/oU6KZTXhuvk',
 				isActive: true,
@@ -129,7 +129,7 @@ async function createInitialDogsTable() {
 				description:
 					'If you feel like you need your very own Jedi Master to guide you through life then this noble doggo is for you.',
 				adoption_fee: 100,
-				inventoryQuantity: 11,
+				quantity: 11,
 				breed: 'Samoyed',
 				image: 'https://unsplash.com/photos/ybHtKz5He9Y',
 				isActive: true,
@@ -139,7 +139,7 @@ async function createInitialDogsTable() {
 				description:
 					'Do not let this breed type intimidate you as this is the sweetest baby around.',
 				adoption_fee: 100,
-				inventoryQuantity: 12,
+				quantity: 12,
 				breed: 'Pit Bull Terrier',
 				image: 'https://unsplash.com/photos/2pbnDRhXc6Q',
 				isActive: true,
@@ -149,7 +149,7 @@ async function createInitialDogsTable() {
 				description:
 					'Get your own big furry best friend to travel the galaxy with.',
 				adoption_fee: 100,
-				inventoryQuantity: 6,
+				quantity: 6,
 				breed: 'Goldendoodle',
 				image: 'https://unsplash.com/photos/Ntm4C2lCWxQ',
 				isActive: true,
@@ -159,7 +159,7 @@ async function createInitialDogsTable() {
 				description:
 					'Do not let that sweet face fool you as she has a heart of a fighter.',
 				adoption_fee: 100,
-				inventoryQuantity: 5,
+				quantity: 5,
 				breed: 'Tibetan Terrier',
 				image: 'https://unsplash.com/photos/hjzs2nA4y-k',
 				isActive: true,
@@ -169,7 +169,7 @@ async function createInitialDogsTable() {
 				description:
 					'This handsome doggo is a suave partner in crime for all of your galaxy adventuring needs.',
 				adoption_fee: 100,
-				inventoryQuantity: 2,
+				quantity: 2,
 				breed: 'Shih Tzu',
 				image: 'https://unsplash.com/photos/Qb7D1xw28Co',
 				isActive: true,
@@ -179,7 +179,7 @@ async function createInitialDogsTable() {
 				description:
 					'This little bounty hunter will steal your heart and your bounty.',
 				adoption_fee: 100,
-				inventoryQuantity: 1,
+				quantity: 1,
 				breed: 'Corgi',
 				image: 'https://unsplash.com/photos/skDictKWID4',
 				isActive: true,
@@ -200,16 +200,76 @@ async function createInitialOrdersTable() {
 	console.log('Starting to create order table!');
 	try {
 		const ordersToCreate = [
-			{ userId: 3, purchaseComplete: false, dogId: 1, quantity: 2 },
-			{ userId: 1, purchaseComplete: false, dogId: 1, quantity: 3 },
-			{ userId: 1, purchaseComplete: false, dogId: 3, quantity: 1 },
-			{ userId: 2, purchaseComplete: false, dogId: 7, quantity: 5 },
-			{ userId: 1, purchaseComplete: false, dogId: 2, quantity: 1 },
-			{ userId: 2, purchaseComplete: false, dogId: 6, quantity: 3 },
-			{ userId: 2, purchaseComplete: false, dogId: 5, quantity: 1 },
-			{ userId: 4, purchaseComplete: false, dogId: 3, quantity: 4 },
-			{ userId: 4, purchaseComplete: false, dogId: 2, quantity: 1 },
-			{ userId: 4, purchaseComplete: false, dogId: 4, quantity: 1 },
+			{
+				userId: 3,
+				purchaseComplete: false,
+				adoption_fee: 100,
+				dogId: 1,
+				quantity: 2,
+			},
+			{
+				userId: 1,
+				purchaseComplete: false,
+				adoption_fee: 100,
+				dogId: 1,
+				quantity: 3,
+			},
+			{
+				userId: 1,
+				purchaseComplete: false,
+				adoption_fee: 100,
+				dogId: 3,
+				quantity: 1,
+			},
+			{
+				userId: 2,
+				purchaseComplete: false,
+				adoption_fee: 100,
+				dogId: 7,
+				quantity: 5,
+			},
+			{
+				userId: 1,
+				purchaseComplete: false,
+				adoption_fee: 100,
+				dogId: 2,
+				quantity: 1,
+			},
+			{
+				userId: 2,
+				purchaseComplete: false,
+				adoption_fee: 100,
+				dogId: 6,
+				quantity: 3,
+			},
+			{
+				userId: 2,
+				purchaseComplete: false,
+				adoption_fee: 100,
+				dogId: 5,
+				quantity: 1,
+			},
+			{
+				userId: 4,
+				purchaseComplete: false,
+				adoption_fee: 100,
+				dogId: 3,
+				quantity: 4,
+			},
+			{
+				userId: 4,
+				purchaseComplete: false,
+				adoption_fee: 100,
+				dogId: 2,
+				quantity: 1,
+			},
+			{
+				userId: 4,
+				purchaseComplete: false,
+				adoption_fee: 100,
+				dogId: 4,
+				quantity: 1,
+			},
 		];
 		const orders = await Promise.all(ordersToCreate.map(createOrders));
 
