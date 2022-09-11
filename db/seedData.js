@@ -27,21 +27,21 @@ async function createTables() {
 		await client.query(`
         CREATE TABLE users(
             id SERIAL PRIMARY KEY,
-            username VARCHAR(50) NOT NULL,
-            first_name VARCHAR(50) NOT NULL,
-            last_name VARCHAR(50) NOT NULL,
-            email VARCHAR(50) NOT NULL,
-            password VARCHAR(50) NOT NULL,
+            username VARCHAR(255) NOT NULL,
+            first_name VARCHAR(255) NOT NULL,
+            last_name VARCHAR(255) NOT NULL,
+            email VARCHAR(255) NOT NULL,
+            password VARCHAR(255) NOT NULL,
             UNIQUE (username, email)
             );
             
         CREATE TABLE dogs(
             id SERIAL PRIMARY KEY, 
-            name VARCHAR(255)  NOT NULL,
+            title VARCHAR(255)  NOT NULL,
             description VARCHAR(255) NOT NULL,
             adoption_fee INTEGER NOT NULL,
             "inventoryQuantity" INTEGER NOT NULL,
-            category VARCHAR(255) NOT NULL,
+            breed VARCHAR(255) NOT NULL,
             image TEXT,
             "isActive" BOOLEAN DEFAULT true
             );
@@ -52,7 +52,7 @@ async function createTables() {
             "purchaseComplete" BOOLEAN DEFAULT false,
             "adoption_fee" INTEGER,
             "dogId" INTEGER REFERENCES dogs(id),
-            quantity INTEGER NOT NULL, 
+            quantity INTEGER NOT NULL
             );
                     
     `);
@@ -177,7 +177,7 @@ async function createInitialDogsTable() {
 			{
 				title: 'Boba Fett',
 				description:
-					'This little bounty hunter will steal your heart and your your bounty .',
+					'This little bounty hunter will steal your heart and your bounty.',
 				adoption_fee: 100,
 				inventoryQuantity: 1,
 				breed: 'Corgi',
