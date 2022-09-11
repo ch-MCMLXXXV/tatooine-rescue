@@ -1,15 +1,14 @@
-const { Client } = require('pg');
+const { Pool } = require('pg');
 
-const client = new Client({
-	connectionString:
-		process.env.DATABASE_URL ||
-		`postgres://localhost:5432/tatooine_rescue-dev`,
+const connectionString =
+	process.env.DATABASE_URL || 'https://localhost:5432/tatooine_rescue-dev';
+
+const client = new Pool({
+	connectionString,
 	ssl:
 		process.env.NODE_ENV === 'production'
 			? { rejectUnauthorized: false }
 			: undefined,
 });
 
-module.exports = {
-	client,
-};
+module.exports = client;
