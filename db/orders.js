@@ -1,6 +1,6 @@
-const { client } = require('./client');
+const client = require('./client');
 
-async function createOrder({
+async function createOrders({
 	userId,
 	purchaseComplete,
 	adoption_fee,
@@ -100,9 +100,9 @@ async function getUsersCart(userId) {
 	try {
 		const { rows: cart } = await client.query(
 			`
-        SELECT orders.id AS "orderId", orders.quantity AS "orderQuantity", dogs.title, dogs.image, dogs.adoption_fee, dogs."inventoryQuantity"
+        SELECT orders.id AS "orderId", orders.quantity AS "orderQuantity", dogs.title, dogs.image, dogs.adoption_fee, dogs."quantity"
         FROM orders
-        JOIN products ON orders."dogId" = dogs.id
+        JOIN orders ON orders."dogId" = dogs.id
         WHERE "userId" = $1 AND "purchaseComplete" = false;
         `,
 			[userId]
@@ -162,7 +162,7 @@ async function getAllOrdersAsAdmin({ userId }) {
 }
 
 module.exports = {
-	createOrder,
+	createOrders,
 	updateOrderQuantity,
 	getAllOrdersByUserId,
 	getOrderById,
