@@ -56,6 +56,7 @@ async function createTables() {
             );
                     
     `);
+		console.log('Finished Building tables!');
 	} catch (error) {
 		console.log('Error constructing tables!');
 
@@ -225,9 +226,9 @@ async function rebuildDB() {
 	try {
 		await dropTables();
 		await createTables();
-		// await createInitialUsers();
-		// await createInitialDogsTable();
-		// await createInitialOrdersTable();
+		await createInitialUsers();
+		await createInitialDogsTable();
+		await createInitialOrdersTable();
 	} catch (error) {
 		console.log('Error during rebuildDB');
 		throw error;
