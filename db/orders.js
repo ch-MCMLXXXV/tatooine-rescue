@@ -100,7 +100,7 @@ async function getUsersCart(userId) {
 	try {
 		const { rows: cart } = await client.query(
 			`
-        SELECT orders.id AS "orderId", orders.quantity AS "orderQuantity", dogs.title, dogs.image, dogs.adoption_fee, dogs."quantity"
+        SELECT orders.id AS "orderId", orders.quantity AS "orderQuantity", dogs.name, dogs.image, dogs.adoption_fee, dogs."quantity"
         FROM orders
         JOIN orders ON orders."dogId" = dogs.id
         WHERE "userId" = $1 AND "purchaseComplete" = false;
