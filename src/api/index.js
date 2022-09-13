@@ -59,7 +59,7 @@ export async function fetchAllDogs() {
 	}
 }
 
-export async function createDog ({ token, _name, description, breed, image_url, adoption_fee }) {
+export async function createDog ({ token, name, description, breed, image, adoption_fee }) {
 	try {
 		return fetch (`${BASE_URL}/dogs`, {
 			method: "POST",
@@ -68,10 +68,10 @@ export async function createDog ({ token, _name, description, breed, image_url, 
 				Authorization: `Bearer ${token}`,
 			},
 			body: JSON.stringify({
-				name: _name,
+				name: name,
 				description: description,
 				breed: breed,
-				image: image_url,
+				image: image,
 				adoption_fee: adoption_fee
 			}),
 		})
@@ -84,7 +84,7 @@ export async function createDog ({ token, _name, description, breed, image_url, 
 	}
 }
 
-export async function editDog ({ token, dogsId, _name, description, breed, image_url, adoption_fee }) {
+export async function editDog ({ token, dogsId, name, description, breed, image, adoption_fee }) {
 	try {
 		return fetch (`${BASE_URL}/dogs/${dogsId}`, {
 			method: "PATCH",
@@ -93,10 +93,10 @@ export async function editDog ({ token, dogsId, _name, description, breed, image
 				"Authorization": `Beaer ${token}`
 			},
 			body: JSON.stringify ({
-				name: _name,
+				name: name,
 				description: description,
 				breed: breed,
-				image: image_url,
+				image: image,
 				adoption_fee: adoption_fee
 			})
 		})

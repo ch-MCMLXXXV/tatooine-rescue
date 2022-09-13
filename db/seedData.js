@@ -37,7 +37,7 @@ async function createTables() {
             
         CREATE TABLE dogs(
             id SERIAL PRIMARY KEY, 
-            title VARCHAR(255)  NOT NULL,
+            name VARCHAR(255)  NOT NULL,
             description VARCHAR(255) NOT NULL,
             adoption_fee INTEGER NOT NULL,
             quantity INTEGER NOT NULL,
@@ -115,7 +115,7 @@ async function createInitialDogsTable() {
 	try {
 		const dogsToCreate = [
 			{
-				title: 'Yoda',
+				name: 'Yoda',
 				description:
 					'Tan Frenchy with the cutest side eye ever. Get your own little yoda to carry around.',
 				adoption_fee: 100,
@@ -125,7 +125,7 @@ async function createInitialDogsTable() {
 				isActive: true,
 			},
 			{
-				title: 'Obi',
+				name: 'Obi',
 				description:
 					'If you feel like you need your very own Jedi Master to guide you through life then this noble doggo is for you.',
 				adoption_fee: 100,
@@ -135,7 +135,7 @@ async function createInitialDogsTable() {
 				isActive: true,
 			},
 			{
-				title: 'Luke',
+				name: 'Luke',
 				description:
 					'Do not let this breed type intimidate you as this is the sweetest baby around.',
 				adoption_fee: 100,
@@ -145,7 +145,7 @@ async function createInitialDogsTable() {
 				isActive: true,
 			},
 			{
-				title: 'Chewbacca',
+				name: 'Chewbacca',
 				description:
 					'Get your own big furry best friend to travel the galaxy with.',
 				adoption_fee: 100,
@@ -155,7 +155,7 @@ async function createInitialDogsTable() {
 				isActive: true,
 			},
 			{
-				title: 'Leia',
+				name: 'Leia',
 				description:
 					'Do not let that sweet face fool you as she has a heart of a fighter.',
 				adoption_fee: 100,
@@ -165,7 +165,7 @@ async function createInitialDogsTable() {
 				isActive: true,
 			},
 			{
-				title: 'Han',
+				name: 'Han',
 				description:
 					'This handsome doggo is a suave partner in crime for all of your galaxy adventuring needs.',
 				adoption_fee: 100,
@@ -175,7 +175,7 @@ async function createInitialDogsTable() {
 				isActive: true,
 			},
 			{
-				title: 'Boba Fett',
+				name: 'Boba Fett',
 				description:
 					'This little bounty hunter will steal your heart and your bounty.',
 				adoption_fee: 100,

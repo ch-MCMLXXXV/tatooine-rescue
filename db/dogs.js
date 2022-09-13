@@ -1,7 +1,7 @@
-const client  = require('./client');
+const client = require('./client');
 
 async function createDogs({
-	title,
+	name,
 	description,
 	adoption_fee,
 	quantity,
@@ -14,11 +14,11 @@ async function createDogs({
 			rows: [dogs],
 		} = await client.query(
 			`
-        INSERT INTO dogs (title, description, adoption_fee, quantity, breed, image, "isActive")
+        INSERT INTO dogs (name, description, adoption_fee, quantity, breed, image, "isActive")
         VALUES($1, $2, $3, $4, $5, $6, $7)
         RETURNING *;
         `,
-			[title, description, adoption_fee, quantity, breed, image, isActive]
+			[name, description, adoption_fee, quantity, breed, image, isActive]
 		);
 		console.log(dogs);
 		return dogs;
@@ -70,18 +70,18 @@ async function getDogsByBreed(breed) {
 	} catch {}
 }
 
-async function updateDogs({ title, adoption_fee, quantity, breed, image, id }) {
+async function updateDogs({ name, adoption_fee, quantity, breed, image, id }) {
 	try {
 		const { rows: dogs } = await client.query(
 			`
             UPDATE dogs
-            SET title = $1,  
+            SET name = $1,  
             adoption_fee= $2, 
             quantity = $3, 
             breed = $4, image = $5
             WHERE id = $6;
         `,
-			[title, adoption_fee, quantity, breed, image, id]
+			[name, adoption_fee, quantity, breed, image, id]
 		);
 		return dogs;
 	} catch {}

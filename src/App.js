@@ -17,14 +17,8 @@ function App() {
    const [token, setToken] = useState();
    const [dogsList, setDogsList] = useState ([{}])
 
-   useEffect(() => {
-      getAllDogs().then((results) => {
-         setDogsList(results)
-      });
-      onload();
-   }, []);
-
-   function onLoad() {
+   
+   function onload() {
       try {
          const storedToken = localStorage.getItem('token');
          if (storedToken) {
@@ -36,6 +30,13 @@ function App() {
          }
       }
    }
+   
+   useEffect(() => {
+      getAllDogs().then((results) => {
+         setDogsList(results)
+      });
+      onload();
+   }, []);
 
    return (
       <div className='App'>
